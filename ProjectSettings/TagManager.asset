@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Solid Obj
   - 
   - 
   - 
@@ -44,8 +44,14 @@ TagManager:
   - name: Background
     uniqueID: 1999082497
     locked: 0
+  - name: Walls
+    uniqueID: 2314490157
+    locked: 0
   - name: Player
     uniqueID: 1778733571
+    locked: 0
+  - name: Walls_not_col
+    uniqueID: 3630264185
     locked: 0
   m_RenderingLayers:
   - Default

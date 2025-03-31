@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private bool isMoving;
     private Vector2 input;
+    public LayerMask walls_obj;
     private Animator animator;
     private void Awake()
     {
@@ -26,7 +27,11 @@ public class PlayerController : MonoBehaviour
                 var targetPos = transform.position;
                 targetPos.x += input.x*2;
                 targetPos.y += input.y*2;
-                StartCoroutine(Move(targetPos));
+
+                if (Iswalkable(targetPos))
+                {
+                    StartCoroutine(Move(targetPos));
+                }
             }
 
         }
@@ -42,5 +47,13 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+    }
+    private bool Iswalkable(Vector3 targetPos)
+    {
+        if (Physics2D.OverlapCircle(new Vector3(targetPos.x,targetPos.y-0.5f,targetPos.z),0.3f,walls_obj)!=null)
+        {
+            return false;
+        }
+        return true;
     }
 }
